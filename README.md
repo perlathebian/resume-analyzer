@@ -8,7 +8,7 @@ A web-based tool that analyzes resumes and provides actionable feedback to help 
 
 ## Screenshot
 
- <img src="screenshot.png" width="600" alt="Resume Analyzer Demo">
+ <img src="screenshot.png" width="300" height="500" alt="Resume Analyzer Demo">
 
 ## Features
 

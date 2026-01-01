@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resume Analyzer</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Smart Resume Analyzer</h1>
+      <p>Upload your resume and get instant feedback</p>
+
+      <div class="upload-section">
+        <input type="file" id="resumeUpload" accept=".pdf" />
+        <label for="resumeUpload" class="upload-btn">Choose Resume (PDF)</label>
+      </div>
+
+      <div id="results" class="results-section" style="display: none">
+        <h2>Extracted Text:</h2>
+        <pre id="extractedText"></pre>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

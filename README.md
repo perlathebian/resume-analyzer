@@ -4,7 +4,7 @@ A web-based tool that analyzes resumes and provides actionable feedback to help 
 
 ## Live Demo
 
-[Try it here](#) _(will add the link after deployment)_
+[Try it here](https://perlathebian.github.io/resume-analyzer/)
 
 ## Screenshot
 

@@ -3,8 +3,10 @@
 Client-side web app that analyzes PDF resumes and provides explainable feedback similar to ATS-style screening.
 
 **Live Demo:** https://perlathebian.github.io/resume-analyzer/
-**Job Match Analysis Screenshot:**
-<img src="images/job_analysis_match.png" width="300" height="500" alt="Analysis Result"/>
+
+<p align="center">
+  <img src="images/job_analysis_match.png" width="300" height="600" alt="Job Match Analysis Screenshot" />
+</p>
 
 ---
 
@@ -28,22 +30,26 @@ This project focuses on **clarity, explainability, and practical heuristics** un
 
 ## Architecture
 
+```
 UI (DOM)
-↓
+  ↓
 Controller (app.js)
-↓
-Core Analysis
+  ↓
+Core Analysis Modules
+```
+
+Logic is separated by responsibility to keep the system readable and debuggable.
 
 ---
 
 ## Scoring Model (Explainable by Design)
 
+```
 Overall Score =
-Completeness (40%)
-
-Contact Info (30%)
-
-Language Quality (30%)
+  Completeness (40%)
++ Contact Info (30%)
++ Language Quality (30%)
+```
 
 **Rationale**
 
@@ -51,7 +57,7 @@ Language Quality (30%)
 - Contact information is critical and binary
 - Action verbs signal impact and seniority
 
-No machine learning used — scoring is deterministic and debuggable.
+No machine learning is used — scoring is deterministic and explainable.
 
 ---
 
@@ -102,11 +108,11 @@ These are documented tradeoffs.
 
 ## Future Improvements
 
-[ ] NLP-based section detection
-[ ] TF-IDF or embeddings for smarter job matching
-[ ] Python-based analysis engine
-[ ] Exportable reports
-[ ] TypeScript and tests
+- [ ] NLP-based section detection
+- [ ] TF-IDF or embeddings for smarter job matching
+- [ ] Python-based analysis engine
+- [ ] Exportable reports
+- [ ] TypeScript and tests
 
 ---
 
@@ -123,4 +129,4 @@ python -m http.server 8000
 npx serve
 ```
 
-Open http://localhost:8000
+Open http://localhost:8000 in your browser.

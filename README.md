@@ -1,67 +1,121 @@
 # Smart Resume Analyzer
 
-A web-based tool that analyzes resumes and provides actionable feedback to help job seekers improve their applications.
+Client-side web app that analyzes PDF resumes and provides explainable feedback similar to ATS-style screening.
 
-## Live Demo
+**Live Demo:** https://perlathebian.github.io/resume-analyzer/
+**Job Match Analysis Screenshot:**
+<img src="images/job_analysis_match.png" width="300" height="500" alt="Analysis Result"/>
 
-[Try it here](https://perlathebian.github.io/resume-analyzer/)
+---
 
-## Screenshot
+## What It Does
 
- <img src="screenshot.png" width="300" height="500" alt="Resume Analyzer Demo">
+- Extracts text from multi-page PDF resumes
+- Detects key resume sections (Experience, Education, Skills, Summary)
+- Extracts contact information (email + international phone formats)
+- Scores resume quality using clear heuristics
+- Optionally compares resumes to job descriptions
+- Runs fully in-browser (no backend, no uploads)
 
-## Features
+---
 
-- **PDF Upload & Parsing** - Extracts text from PDF resumes using PDF.js
-- **Section Detection** - Identifies key resume sections (Experience, Education, Skills, Summary)
-- **Contact Information Extraction** - Finds email and phone numbers using regex patterns
-- **Keyword Analysis** - Detects action verbs and technical keywords
-- **Smart Scoring System** - Provides scores for completeness, contact info, and language quality
-- **Actionable Suggestions** - Gives specific recommendations for improvement
-- **Responsive Design** - Works on desktop and mobile devices
+## Why This Project Exists
 
-## Technologies Used
+Most resume tools are opaque or over-engineered.  
+This project focuses on **clarity, explainability, and practical heuristics** under real ATS-like constraints.
 
-- **HTML5** - Structure and semantic markup
-- **CSS3** - Styling with gradients, animations, and responsive design
-- **JavaScript (ES6+)** - Core logic and DOM manipulation
-- **PDF.js** - PDF parsing library by Mozilla
-- **Regular Expressions** - Pattern matching for contact info and keywords
+---
 
-## Key Concepts Demonstrated
+## Architecture
 
-- **Text Processing & Parsing** - Extracting and analyzing unstructured data
-- **Pattern Matching (Regex)** - Finding emails, phone numbers, and keywords
-- **Algorithm Design** - Scoring system with weighted calculations
-- **Data Structures** - Objects and arrays for organizing analysis results
-- **Asynchronous Programming** - Handling PDF loading with async/await
-- **DOM Manipulation** - Dynamic UI updates based on analysis
-- **File Handling** - Reading user-uploaded files in the browser
+UI (DOM)
+↓
+Controller (app.js)
+↓
+Core Analysis
 
-## Getting Started
+---
 
-### Prerequisites
+## Scoring Model (Explainable by Design)
 
-- A modern web browser (Chrome, Firefox, Safari, Edge)
-- No installation required - runs entirely in the browser
+Overall Score =
+Completeness (40%)
 
-### Running Locally
+Contact Info (30%)
 
-1. Clone the repository:
+Language Quality (30%)
+
+**Rationale**
+
+- Missing sections are a common ATS rejection cause
+- Contact information is critical and binary
+- Action verbs signal impact and seniority
+
+No machine learning used — scoring is deterministic and debuggable.
+
+---
+
+## Key Technical Decisions
+
+### PDF Parsing
+
+- Uses **PDF.js (Mozilla)** for consistent text extraction across formats
+
+### Section Detection
+
+- Keyword-based heading detection
+- Favors transparency and speed over perfect accuracy
+
+### Contact Extraction
+
+- Regex-based email and phone parsing
+- Phone detection supports international formats with digit-count validation
+
+### Job Matching (Optional)
+
+- Set-based keyword intersection
+- Stop-word filtering to reduce noise
+- MVP approach without black-box NLP
+
+---
+
+## Tech Stack
+
+- JavaScript (ES6+) — async/await, Sets
+- HTML / CSS
+- PDF.js
+- Browser APIs (FileReader, DOM)
+
+No backend. No data persistence.
+
+---
+
+## Limitations
+
+- Keyword matching is context-blind
+- Creative section headings may not be detected
+- PDF text order depends on document structure
+
+These are documented tradeoffs.
+
+---
+
+## Future Improvements
+
+[ ] NLP-based section detection
+[ ] TF-IDF or embeddings for smarter job matching
+[ ] Python-based analysis engine
+[ ] Exportable reports
+[ ] TypeScript and tests
+
+---
+
+## Run Locally
 
 ```bash
-git clone https://github.com/perlathebian/resume-analyzer.git
-```
-
-2. Navigate to the project folder:
-
-```bash
+git clone https://github.com/perlathebian/resume-analyzer
 cd resume-analyzer
-```
 
-3. Open `index.html` in your browser or use a local server:
-
-```bash
 # If you have Python installed:
 python -m http.server 8000
 
@@ -69,48 +123,4 @@ python -m http.server 8000
 npx serve
 ```
 
-4. Upload a PDF resume and see the analysis!
-
-## How It Works
-
-1. **Upload** - User selects a PDF resume file
-2. **Extract** - PDF.js library extracts text from all pages
-3. **Analyze** - JavaScript functions process the text:
-   - Detect sections using keyword matching
-   - Extract contact info using regex patterns
-   - Count action verbs and technical keywords
-   - Calculate weighted scores
-4. **Report** - Display results with visual score indicators and suggestions
-
-## Scoring Algorithm
-
-```
-Overall Score = (Completeness × 40%) + (Contact Info × 30%) + (Language Quality × 30%)
-```
-
-## Future Enhancements
-
-- [ ] Job description comparison - match resume keywords to job requirements
-- [ ] ATS (Applicant Tracking System) compatibility checker
-- [ ] Export analysis results as PDF
-- [ ] Save and compare multiple resume versions
-- [ ] Industry-specific keyword databases
-- [ ] Grammar and spelling checker
-
-## What I Learned
-
-This project helped me develop skills in:
-
-- Working with third-party JavaScript libraries
-- Text processing and pattern matching with regex
-- Designing scoring algorithms
-- Creating intuitive user interfaces
-- Handling asynchronous operations
-- Writing clean, maintainable code
-
-## Author
-
-**Perla Thebian**
-
-- GitHub: [@perlathebian](https://github.com/perlathebian)
-- Email: perlathebian02@gmail.com
+Open http://localhost:8000

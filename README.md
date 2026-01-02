@@ -18,6 +18,7 @@ Client-side web app that analyzes PDF resumes and provides explainable feedback 
 - Scores resume quality using clear heuristics
 - Optionally compares resumes to job descriptions
 - Runs fully in-browser (no backend, no uploads)
+- Modular code structure for maintainability and readability
 
 ---
 
@@ -33,12 +34,17 @@ This project focuses on **clarity, explainability, and practical heuristics** un
 ```
 UI (DOM)
   ↓
-Controller (app.js)
+Controller (main.js)
   ↓
 Core Analysis Modules
+  ├─ modules/pdfParser.js
+  ├─ modules/resumeAnalysis.js
+  ├─ modules/scoring.js
+  ├─ modules/jobComparison.js
+  └─ modules/uiRenderer.js
 ```
 
-Logic is separated by responsibility to keep the system readable and debuggable.
+Logic is now separated by responsibility into ES modules to keep the system readable, testable, and maintainable.
 
 ---
 
@@ -87,7 +93,7 @@ No machine learning is used — scoring is deterministic and explainable.
 
 ## Tech Stack
 
-- JavaScript (ES6+) — async/await, Sets
+- JavaScript (ES6+) — async/await, Sets, ES Modules
 - HTML / CSS
 - PDF.js
 - Browser APIs (FileReader, DOM)
@@ -118,7 +124,7 @@ These are documented tradeoffs.
 
 ## Run Locally
 
-```bash
+```
 git clone https://github.com/perlathebian/resume-analyzer
 cd resume-analyzer
 
@@ -127,6 +133,9 @@ python -m http.server 8000
 
 # If you have Node.js installed:
 npx serve
-```
+``
 
 Open http://localhost:8000 in your browser.
+
+> **Note:** Make sure to serve via local server because ES modules require `type="module"` in your HTML `<script>` tags.
+```

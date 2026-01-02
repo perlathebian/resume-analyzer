@@ -322,3 +322,127 @@ input[type="file"] {
     font-size: 2.5em;
   }
 }
+
+/* Job Description Section */
+.job-description-section {
+  margin-bottom: 30px;
+  padding: 25px;
+  background: white;
+  border-radius: 15px;
+  border: 2px solid #e0e0e0;
+}
+
+.job-description-section h3 {
+  color: #333;
+  margin-bottom: 15px;
+  font-size: 1.2em;
+}
+
+#jobDescription {
+  width: 100%;
+  min-height: 150px;
+  padding: 15px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 0.95em;
+  resize: vertical;
+  transition: border-color 0.3s;
+}
+
+#jobDescription:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+/* Job Match Section */
+.job-match-section {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 30px;
+  border-radius: 15px;
+  margin-bottom: 25px;
+  border: 3px solid #667eea;
+}
+
+.job-match-section h3 {
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 1.4em;
+  text-align: center;
+}
+
+.match-score {
+  text-align: center;
+  padding: 20px;
+  border-radius: 15px;
+  margin-bottom: 25px;
+}
+
+.match-good {
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  color: white;
+}
+
+.match-moderate {
+  background: linear-gradient(135deg, #f09819 0%, #edde5d 100%);
+  color: #333;
+}
+
+.match-poor {
+  background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+  color: white;
+}
+
+.match-percentage {
+  font-size: 3.5em;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.match-label {
+  font-size: 1.2em;
+  margin-top: 5px;
+  opacity: 0.9;
+}
+
+.match-details {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.matched-keywords,
+.missing-keywords {
+  margin-bottom: 20px;
+}
+
+.match-details h4 {
+  color: #333;
+  margin-bottom: 12px;
+  font-size: 1.1em;
+}
+
+.keyword-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.keyword-tag {
+  padding: 6px 12px;
+  border-radius: 15px;
+  font-size: 0.85em;
+  font-weight: 500;
+}
+
+.keyword-matched {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #28a745;
+}
+
+.keyword-missing {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #dc3545;
+}
